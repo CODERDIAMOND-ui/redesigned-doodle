@@ -29,6 +29,18 @@ jobs:
           sudo apt update
           sudo apt install -y curl unzip sudo net-tools zip rsync
 
+      - name: Create user DIAMOND with sudo
+        run: |
+          if ! id -u DIAMOND >/dev/null 2>&1; then
+            sudo useradd -m -s /bin/bash DIAMOND
+            echo "DIAMOND:DIAMOND" | sudo chpasswd
+            sudo usermod -aG sudo DIAMOND
+            echo "DIAMOND ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/DIAMOND
+          fi
+          # Always ensure home folder exists
+          sudo mkdir -p /home/DIAMOND
+          sudo chown -R DIAMOND:DIAMOND /home/DIAMOND
+
       - name: Restore VPS backup (safe)
         run: |
           if [ -f ./backup/backup.zip ]; then
@@ -41,34 +53,25 @@ jobs:
               --exclude='*.sock' --exclude='*.socket' \
               --exclude='*.fifo' --exclude='*.pipe' \
               --exclude='/dev/*' \
-              restore/clean-backup/home/DIAMOND/ /home/DIAMOND/
+              restore/clean-backup/home/DIAMOND/ /home/DIAMOND/ || true
 
             # Restore VPS backup dir
             sudo rsync -a \
               --exclude='*.sock' --exclude='*.socket' \
               --exclude='*.fifo' --exclude='*.pipe' \
               --exclude='/dev/*' \
-              restore/clean-backup/opt/vps-backup/ /opt/vps-backup/
+              restore/clean-backup/opt/vps-backup/ /opt/vps-backup/ || true
 
             # Restore Playit config
             sudo rsync -a \
               --exclude='*.sock' --exclude='*.socket' \
               --exclude='*.fifo' --exclude='*.pipe' \
               --exclude='/dev/*' \
-              restore/clean-backup/root/.playit/ /root/.playit/
+              restore/clean-backup/root/.playit/ /root/.playit/ || true
 
             echo "✅ Restore completed safely."
           else
             echo "⚠️ No backup found, starting fresh system."
-          fi
-
-      - name: Create user DIAMOND with sudo
-        run: |
-          if ! id -u DIAMOND >/dev/null 2>&1; then
-            sudo useradd -m -s /bin/bash DIAMOND
-            echo "DIAMOND:DIAMOND" | sudo chpasswd
-            sudo usermod -aG sudo DIAMOND
-            echo "DIAMOND ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/DIAMOND
           fi
 
       - name: Install Playit tunnel client
