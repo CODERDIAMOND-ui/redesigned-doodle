@@ -4,6 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kodari Clone — AI + Plugin Creator</title>
+
+  <!-- Handwritten / playful font -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
   <!-- JSZip + FileSaver for plugin ZIP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -102,13 +106,13 @@
 
       <div class="card">
         <h3>Prompt / Chat (Mock)</h3>
-        <p class="muted">Type a prompt and click Send — this demo doesn't call real AI (no keys). You can wire your own backend later.</p>
+        <p class="muted">Type a prompt and click Send — this demo is a local mock. You can wire a backend later to call real AI models.</p>
         <textarea id="promptInput" placeholder="Create a DeluxeMenus config for a shop..."></textarea>
         <div class="row" style="margin-top:8px;">
           <button id="sendPrompt" class="btn primary">Send</button>
           <button id="clearPrompt" class="btn ghost">Clear</button>
         </div>
-        <div id="chatArea" class="chatArea"></div>
+        <div id="chatArea" class="chatArea" aria-live="polite"></div>
       </div>
     </section>
   </main>
