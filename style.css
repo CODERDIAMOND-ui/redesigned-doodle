@@ -1,10 +1,11 @@
 :root{
   --bg1:#06060a;
-  --bg2:#150028;
+  --bg2:#170024;
   --card:#111217;
-  --muted:#bfc0d6;
-  --accent:#b388ff;
+  --muted:#cfcfe6;
+  --accent:#caa2ff;
   --glass: rgba(255,255,255,0.03);
+  --hand-font: "Patrick Hand", cursive;
 }
 
 /* Reset */
@@ -12,7 +13,7 @@
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: var(--hand-font), Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background:linear-gradient(135deg,var(--bg1),var(--bg2));
   color:#fff;
   display:flex;
@@ -30,7 +31,7 @@ body{
   backdrop-filter: blur(6px);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
 }
-.logo{font-weight:700;letter-spacing:2px}
+.logo{font-weight:700;letter-spacing:2px;font-size:18px}
 .tag{font-size:12px;color:var(--muted);margin-left:8px}
 .left{display:flex;align-items:center;gap:10px}
 .right{display:flex;align-items:center;gap:12px}
@@ -42,7 +43,7 @@ body{
 
 /* Hero */
 .hero{text-align:center;margin-bottom:18px}
-.hero h1{font-size:32px;margin:6px 0}
+.hero h1{font-size:30px;margin:6px 0}
 .hero .accent{color:var(--accent)}
 .sub{color:var(--muted);margin:0}
 
@@ -59,7 +60,7 @@ body{
 .muted{color:var(--muted);font-size:13px;margin-bottom:10px}
 
 /* Form */
-.form-grid{display:flex;gap:12px}
+.form-grid{display:flex;gap:12px;flex-wrap:wrap}
 .form-col{flex:1;display:flex;flex-direction:column;gap:8px}
 .form-col label{font-size:13px;color:var(--muted)}
 .form-col input{padding:8px;border-radius:8px;border:none;background:#0d0d11;color:#fff;outline:none}
@@ -69,7 +70,7 @@ body{
 .cmd-row button{background:#ff6b6b;border:none;padding:6px;border-radius:6px;color:#fff}
 
 /* Buttons */
-.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#fff;cursor:pointer}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#fff;cursor:pointer;font-family:var(--hand-font)}
 .btn.primary{background:linear-gradient(90deg,var(--accent),#9d7cff);border:none}
 .btn.small{padding:6px 10px;font-size:13px}
 .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
@@ -82,16 +83,17 @@ body{
 .preview{background:#0b0b0f;padding:12px;border-radius:8px;margin-top:8px;color:var(--muted);font-size:13px;overflow:auto}
 
 /* Prompt area */
-textarea#promptInput{width:100%;min-height:100px;padding:10px;border-radius:10px;border:none;background:#0d0d11;color:#fff;resize:vertical;outline:none}
+textarea#promptInput{width:100%;min-height:100px;padding:10px;border-radius:10px;border:none;background:#0d0d11;color:#fff;resize:vertical;outline:none;font-family:var(--hand-font)}
 .chatArea{margin-top:8px;background:rgba(0,0,0,0.12);padding:8px;border-radius:8px;min-height:60px;max-height:220px;overflow:auto}
+.chat-msg{font-family:var(--hand-font);}
 
 /* Footer */
 .footer{padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .compose{display:flex;gap:8px;flex:1;max-width:700px}
-.compose input{flex:1;padding:8px;border-radius:10px;border:none;background:#0f0f13;color:#fff}
+.compose input{flex:1;padding:8px;border-radius:10px;border:none;background:#0f0f13;color:#fff;font-family:var(--hand-font)}
 .credits{color:var(--muted);font-size:13px}
 
-/* Responsive */
+/* Mobile */
 @media (max-width:880px){
   .cards{grid-template-columns:1fr; }
   .hero h1{font-size:24px}
