@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kodari Clone — AI + Plugin Creator</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- JSZip + FileSaver for plugin ZIP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="left">
+      <div class="logo">KODARI</div>
+      <div class="tag">ai • plugins</div>
+    </div>
+    <div class="right">
+      <div class="coins">💰 <span id="coinsCount">0</span></div>
+      <div class="avatar" id="profileBtn" title="Profile"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Hi! I'm <span class="accent">Kodari</span> :)</h1>
+      <p class="sub">AI-powered tools for Minecraft admins — configs, plugins and quick templates.</p>
+
+      <div class="controls-row">
+        <div class="chip">
+          <label>AI Model</label>
+          <select id="modelSelect">
+            <option>Claude Sonnet 4</option>
+            <option>GPT-4o</option>
+            <option>OpenAI GPT-4</option>
+          </select>
+        </div>
+
+        <div class="chip">
+          <label>Game</label>
+          <select id="gameSelect">
+            <option>Minecraft Java</option>
+            <option>Minecraft Bedrock</option>
+          </select>
+        </div>
+
+        <div class="chip">
+          <label>Category</label>
+          <select id="catSelect">
+            <option>Plugins</option>
+            <option>Configs</option>
+            <option>Scripts</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card wide">
+        <h3>Minecraft Plugin Creator</h3>
+        <p class="muted">Generate a plugin skeleton (plugin.yml + Main.java) and download as ZIP.</p>
+
+        <div class="form-grid">
+          <div class="form-col">
+            <label>Plugin Name</label>
+            <input id="pluginName" value="MyPlugin" />
+
+            <label>Plugin ID</label>
+            <input id="pluginId" value="myplugin" />
+
+            <label>Version</label>
+            <input id="pluginVersion" value="1.0.0" />
+
+            <label>Author</label>
+            <input id="pluginAuthor" value="YourName" />
+          </div>
+
+          <div class="form-col">
+            <label>Description</label>
+            <input id="pluginDesc" value="A cool plugin" />
+
+            <label>Base Package</label>
+            <input id="basePackage" value="com.example.myplugin" />
+
+            <label>Commands</label>
+            <div id="commandsList" class="commandsList"></div>
+            <div class="row">
+              <button id="addCommand" class="btn small">+ Add command</button>
+              <button id="clearCommands" class="btn small ghost">Clear</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn primary">Generate & Download ZIP</button>
+          <button id="previewBtn" class="btn ghost">Preview plugin.yml</button>
+          <button id="addCoins" class="btn mini">+5 Coins</button>
+        </div>
+
+        <pre id="previewArea" class="preview" hidden></pre>
+      </div>
+
+      <div class="card">
+        <h3>Prompt / Chat (Mock)</h3>
+        <p class="muted">Type a prompt and click Send — this demo doesn't call real AI (no keys). You can wire your own backend later.</p>
+        <textarea id="promptInput" placeholder="Create a DeluxeMenus config for a shop..."></textarea>
+        <div class="row" style="margin-top:8px;">
+          <button id="sendPrompt" class="btn primary">Send</button>
+          <button id="clearPrompt" class="btn ghost">Clear</button>
+        </div>
+        <div id="chatArea" class="chatArea"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="compose">
+      <input id="quickInput" placeholder="Ask Kodari to create a deluxemenus config..." />
+      <button id="quickSend" class="btn">→</button>
+    </div>
+    <div class="credits">Built with ♥ — Clone for learning</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

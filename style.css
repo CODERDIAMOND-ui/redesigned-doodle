@@ -1,0 +1,99 @@
+:root{
+  --bg1:#06060a;
+  --bg2:#150028;
+  --card:#111217;
+  --muted:#bfc0d6;
+  --accent:#b388ff;
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+.logo{font-weight:700;letter-spacing:2px}
+.tag{font-size:12px;color:var(--muted);margin-left:8px}
+.left{display:flex;align-items:center;gap:10px}
+.right{display:flex;align-items:center;gap:12px}
+.coins{background:var(--glass);padding:6px 10px;border-radius:10px;font-weight:600}
+.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(180deg,#333,#222);box-shadow:0 4px 12px rgba(0,0,0,0.6)}
+
+/* Container */
+.container{width:100%;max-width:1100px;margin:18px auto;padding:0 16px;flex:1;}
+
+/* Hero */
+.hero{text-align:center;margin-bottom:18px}
+.hero h1{font-size:32px;margin:6px 0}
+.hero .accent{color:var(--accent)}
+.sub{color:var(--muted);margin:0}
+
+/* Controls row */
+.controls-row{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.chip{background:var(--glass);padding:8px 10px;border-radius:10px;font-size:13px;display:flex;flex-direction:column;align-items:flex-start;min-width:150px}
+.chip label{font-size:11px;color:var(--muted);margin-bottom:6px}
+.chip select{background:transparent;border:none;color:#fff;outline:none;width:100%;font-weight:600}
+
+/* Cards grid */
+.cards{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.card h3{margin:0 0 6px 0}
+.muted{color:var(--muted);font-size:13px;margin-bottom:10px}
+
+/* Form */
+.form-grid{display:flex;gap:12px}
+.form-col{flex:1;display:flex;flex-direction:column;gap:8px}
+.form-col label{font-size:13px;color:var(--muted)}
+.form-col input{padding:8px;border-radius:8px;border:none;background:#0d0d11;color:#fff;outline:none}
+.commandsList{max-height:160px;overflow:auto;padding:6px;background:rgba(0,0,0,0.2);border-radius:8px}
+.cmd-row{display:flex;gap:6px;margin-bottom:6px}
+.cmd-row input{flex:1;padding:6px;border-radius:6px;border:none;background:#0f0f13}
+.cmd-row button{background:#ff6b6b;border:none;padding:6px;border-radius:6px;color:#fff}
+
+/* Buttons */
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:#fff;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#9d7cff);border:none}
+.btn.small{padding:6px 10px;font-size:13px}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.btn.mini{padding:6px 8px;font-size:13px}
+
+/* Actions */
+.actions{display:flex;gap:8px;align-items:center;margin-top:12px}
+
+/* Preview */
+.preview{background:#0b0b0f;padding:12px;border-radius:8px;margin-top:8px;color:var(--muted);font-size:13px;overflow:auto}
+
+/* Prompt area */
+textarea#promptInput{width:100%;min-height:100px;padding:10px;border-radius:10px;border:none;background:#0d0d11;color:#fff;resize:vertical;outline:none}
+.chatArea{margin-top:8px;background:rgba(0,0,0,0.12);padding:8px;border-radius:8px;min-height:60px;max-height:220px;overflow:auto}
+
+/* Footer */
+.footer{padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.compose{display:flex;gap:8px;flex:1;max-width:700px}
+.compose input{flex:1;padding:8px;border-radius:10px;border:none;background:#0f0f13;color:#fff}
+.credits{color:var(--muted);font-size:13px}
+
+/* Responsive */
+@media (max-width:880px){
+  .cards{grid-template-columns:1fr; }
+  .hero h1{font-size:24px}
+  .container{padding:0 12px}
+}
