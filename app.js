@@ -2,16 +2,13 @@
 // Requires JSZip and FileSaver from CDN (index.html includes them)
 
 (() => {
-  /* ---------- Utilities ---------- */
-  const $ = (sel) => document.querySelector(sel);
-  const $all = (sel) => Array.from(document.querySelectorAll(sel));
+  /* ---------- Helpers ---------- */
   const get = id => document.getElementById(id);
 
   /* ---------- Coins UI ---------- */
   const coinsCount = get('coinsCount');
   let coins = 0;
   function setCoins(n){ coins = n; coinsCount.textContent = coins; }
-  // quick add coins button
   get('addCoins').addEventListener('click', ()=> setCoins(coins + 5));
 
   /* ---------- Commands UI ---------- */
@@ -30,7 +27,6 @@
     return div;
   }
 
-  // initial
   commandsList.appendChild(makeCommandRow('hello','Say hello'));
 
   addCommandBtn.addEventListener('click', (e)=>{
@@ -137,7 +133,6 @@ public class Main extends JavaPlugin {
     const txt = promptInput.value.trim();
     if(!txt) return;
     appendChat('user', txt);
-    // mock response
     appendChat('bot', `Mock response for prompt: "${txt}"\n\n(Note: connect a backend to call real AI models.)`);
     promptInput.value = '';
   });
@@ -154,7 +149,7 @@ public class Main extends JavaPlugin {
     quickInput.value = '';
   });
 
-  /* Model selection change (mock) */
+  // model selection change (mock)
   get('modelSelect').addEventListener('change', (e)=>{
     appendChat('bot', `AI model switched to: ${e.target.value}`);
   });
